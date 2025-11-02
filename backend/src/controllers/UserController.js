@@ -1,5 +1,5 @@
 const { UserOTP, UserVerify } = require("../services/UserService");
-const { SendText } = require("../services/OpenAiApi");
+const { SendText, SendImageText } = require("../services/OpenAiApi");
 
 exports.UserLogin = async (req, res) => {
     let result = await UserOTP(req)
@@ -16,3 +16,8 @@ exports.textSend = async (req, res) => {
     let result = await SendText(req);
     return res.status(200).json(result);
 }
+exports.sendImage = async (req, res) => {
+    let result = await SendImageText(req);
+    return res.status(200).json(result);
+}
+
